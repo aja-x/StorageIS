@@ -15,8 +15,11 @@
                         Menu
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link active" href="#" aria-expanded="false">
+                        <a class="nav-link active" href="" aria-expanded="false">
                             <i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span>
+                        </a>
+                        <a class="nav-link" href="{{ route('blok.index') }}">
+                            <i class="fas fa-fw fa-th-large"></i> Blok
                         </a>
                     </li>
                     <li class="nav-divider">
@@ -25,8 +28,29 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
                            data-target="#submenu-6" aria-controls="submenu-6">
-                            <i class="fas fa-fw fa-file"></i> Pages </a>
+                            <i class="fas fa-fw fa-cogs"></i> Master </a>
                         <div id="submenu-6" class="collapse submenu" style="">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Asal Kota</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Jenis Beras</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Kualitas Beras</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Berat Beras</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
+                           data-target="#submenu-7" aria-controls="submenu-7">
+                            <i class="fas fa-fw fa-file"></i> Pages </a>
+                        <div id="submenu-7" class="collapse submenu" style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
                                     <a class="nav-link" href="pages/blank-page.html">Blank Page</a>

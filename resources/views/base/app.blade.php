@@ -10,8 +10,13 @@
     <link href="{{ asset('concept-assets/vendor/fonts/circular-std/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('concept-assets/libs/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('concept-assets/vendor/fonts/fontawesome/css/fontawesome-all.css') }}">
-    <link rel="stylesheet" href="{{ asset('concept-assets/vendor/charts/chartist-bundle/chartist.css') }}">
-    <link rel="stylesheet" href="{{ asset('concept-assets/vendor/charts/morris-bundle/morris.css') }}">
+
+    {{--Data Table--}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/datatables/css/dataTables.bootstrap4.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('concept-assets/vendor/datatables/css/buttons.bootstrap4.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('concept-assets/vendor/datatables/css/select.bootstrap4.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('concept-assets/vendor/datatables/css/fixedHeader.bootstrap4.css') }}">
+
     <link rel="stylesheet"
           href="{{ asset('concept-assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('concept-assets/vendor/charts/c3charts/c3.css') }}">
@@ -54,10 +59,26 @@
 <script src="{{ asset('concept-assets/vendor/slimscroll/jquery.slimscroll.js') }}"></script>
 <!-- main js -->
 <script src="{{ asset('concept-assets/libs/js/main-js.js') }}"></script>
-<!-- chart chartist js -->
-<script src="{{ asset('concept-assets/vendor/charts/chartist-bundle/chartist.min.js') }}"></script>
 <!-- sparkline js -->
 <script src="{{ asset('concept-assets/vendor/charts/sparkline/jquery.sparkline.js') }}"></script>
-</body>
 
+{{--data table--}}
+@if(Route::is('blok.index'))
+<script src="{{ asset('concept-assets/cdn/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('concept-assets/vendor/datatables/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('concept-assets/cdn/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('concept-assets/vendor/datatables/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('concept-assets/vendor/datatables/js/data-table.js') }}"></script>
+<script src="{{ asset('concept-assets/cdn/jszip.min.js') }}"></script>
+<script src="{{ asset('concept-assets/cdn/pdfmake.min.js') }}"></script>
+<script src="{{ asset('concept-assets/cdn/vfs_fonts.js') }}"></script>
+<script src="{{ asset('concept-assets/cdn/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('concept-assets/cdn/buttons.print.min.js') }}"></script>
+<script src="{{ asset('concept-assets/cdn/buttons.colVis.min.js') }}"></script>
+<script src="{{ asset('concept-assets/cdn/dataTables.rowGroup.min.js') }}"></script>
+<script src="{{ asset('concept-assets/cdn/dataTables.select.min.js') }}"></script>
+<script src="{{ asset('concept-assets/cdn/dataTables.fixedHeader.min.js') }}"></script>
+@endif
+
+</body>
 </html>

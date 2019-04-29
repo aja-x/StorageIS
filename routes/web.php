@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('gudang.index');
 });
+
+Route::get('/coba-login', function () {
+    return view('login');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('blok', 'BlokController');
