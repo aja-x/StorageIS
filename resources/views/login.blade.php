@@ -1,4 +1,4 @@
-<!doctype html>
+
 <html lang="en">
 
 <head>
@@ -41,12 +41,16 @@
             <span class="splash-description">Login Page</span>
         </div>
         <div class="card-body">
-            <form>
+            <form method="post" action="{{ route('login') }}">
+                @csrf
+
                 <div class="form-group">
-                    <input class="form-control form-control-lg" id="username" type="email" placeholder="Email" autocomplete="off">
+                    <input class="form-control form-control-lg" name="email"
+                           type="email" placeholder="Email" autocomplete="off" required>
                 </div>
                 <div class="form-group">
-                    <input class="form-control form-control-lg" id="password" type="password" placeholder="Password">
+                    <input class="form-control form-control-lg" name="password"
+                           type="password" placeholder="Password" required>
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
             </form>

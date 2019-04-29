@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('gudang.index');
+    return view('auth.login');
 });
 
 Route::get('/coba-login', function () {
@@ -21,5 +21,5 @@ Route::get('/coba-login', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('home');
 Route::resource('blok', 'BlokController');

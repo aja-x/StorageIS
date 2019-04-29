@@ -6,7 +6,7 @@
             <div class="card">
                 <h5 class="card-header">Welcome</h5>
                 <div class="card-body">
-                    Welcome Admin!
+                    Welcome {{ Auth::user()->name }}!
                 </div>
             </div>
         </div>
