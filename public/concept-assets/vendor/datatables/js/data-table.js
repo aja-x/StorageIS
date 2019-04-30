@@ -85,4 +85,11 @@ jQuery(document).ready(function($) {
         });
     }
 
+    if ($("table.custom1").length) {
+        $(document).ready(function() {
+            $('table.custom1').DataTable({
+                lengthChange: false,
+            });
+        });
+    }
 });

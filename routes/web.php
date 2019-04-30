@@ -20,3 +20,4 @@ Auth::routes();
 Route::get('/dashboard', 'HomeController@index')->name('home');
 Route::resource('blok', 'BlokController');
 Route::post('/blok/setup', 'BlokController@setup')->name('blok.setup');
+Route::resource('kota', 'AsalKotaController');

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('concept-assets/vendor/fonts/fontawesome/css/fontawesome-all.css') }}">
 
     {{--Data Table--}}
-    @if(Route::is('blok.index'))
+    @if(Route::is('blok.index') or Route::is('kota.index'))
     <link rel="stylesheet" type="text/css"
           href="{{ asset('assets/vendor/datatables/css/dataTables.bootstrap4.css') }}">
     <link rel="stylesheet" type="text/css"
@@ -67,7 +67,7 @@
 <script src="{{ asset('concept-assets/vendor/charts/sparkline/jquery.sparkline.js') }}"></script>
 
 {{--data table--}}
-@if(Route::is('blok.index'))
+@if(Route::is('blok.index') or Route::is('kota.index'))
 <script src="{{ asset('concept-assets/cdn/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('concept-assets/vendor/datatables/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('concept-assets/cdn/dataTables.buttons.min.js') }}"></script>
