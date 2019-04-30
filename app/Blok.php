@@ -10,8 +10,6 @@ class Blok extends Model
 
     protected $fillable = [
         'nama_blok',
-        'baris_blok',
-        'kolom_blok',
         'kapasitas_blok',
         'sisa_kapasitas_blok',
     ];

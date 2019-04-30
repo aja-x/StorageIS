@@ -15,11 +15,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/coba-login', function () {
-    return view('login');
-});
-
 Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index')->name('home');
 Route::resource('blok', 'BlokController');
+Route::post('/blok/setup', 'BlokController@setup')->name('blok.setup');

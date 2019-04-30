@@ -12,10 +12,16 @@
     <link rel="stylesheet" href="{{ asset('concept-assets/vendor/fonts/fontawesome/css/fontawesome-all.css') }}">
 
     {{--Data Table--}}
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/datatables/css/dataTables.bootstrap4.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('concept-assets/vendor/datatables/css/buttons.bootstrap4.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('concept-assets/vendor/datatables/css/select.bootstrap4.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('concept-assets/vendor/datatables/css/fixedHeader.bootstrap4.css') }}">
+    @if(Route::is('blok.index'))
+    <link rel="stylesheet" type="text/css"
+          href="{{ asset('assets/vendor/datatables/css/dataTables.bootstrap4.css') }}">
+    <link rel="stylesheet" type="text/css"
+          href="{{ asset('concept-assets/vendor/datatables/css/buttons.bootstrap4.css') }}">
+    <link rel="stylesheet" type="text/css"
+          href="{{ asset('concept-assets/vendor/datatables/css/select.bootstrap4.css') }}">
+    <link rel="stylesheet" type="text/css"
+          href="{{ asset('concept-assets/vendor/datatables/css/fixedHeader.bootstrap4.css') }}">
+    @endif
 
     <link rel="stylesheet"
           href="{{ asset('concept-assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css') }}">
@@ -35,11 +41,9 @@
     <!-- wrapper  -->
     <!-- ============================================================== -->
     <div class="dashboard-wrapper">
-        <div class="dashboard-ecommerce">
-            <div class="container-fluid dashboard-content ">
-                @include('base.page-header')
-                @yield('content')
-            </div>
+        <div class="container-fluid dashboard-content ">
+            @include('base.page-header')
+            @yield('content')
         </div>
     @include('base.footer')
     </div>

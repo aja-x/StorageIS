@@ -5,8 +5,8 @@
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="mb-0"></h5>
-                    <p>This example shows DataTables and the Buttons extension being used with the Bootstrap 4 framework providing the styling.</p>
+                    <h5 class="mb-0">Data Blok</h5>
+                    <p></p>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
