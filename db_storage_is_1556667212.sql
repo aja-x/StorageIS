@@ -74,8 +74,10 @@ DROP TABLE IF EXISTS `tb_asal_kota`;
 CREATE TABLE `tb_asal_kota` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_kota` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,6 +86,7 @@ CREATE TABLE `tb_asal_kota` (
 
 LOCK TABLES `tb_asal_kota` WRITE;
 /*!40000 ALTER TABLE `tb_asal_kota` DISABLE KEYS */;
+INSERT INTO `tb_asal_kota` VALUES (4,'Surabaya','2019-04-30 10:09:50','2019-04-30 10:09:50');
 /*!40000 ALTER TABLE `tb_asal_kota` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -436,4 +439,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-30 18:35:03
+-- Dump completed on 2019-05-01  6:33:36
