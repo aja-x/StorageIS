@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\AsalKota;
+use App\JenisBeras;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
 
-class AsalKotaController extends Controller
+class JenisBerasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class AsalKotaController extends Controller
      */
     public function index()
     {
-        $kota = AsalKota::all();
-        return view('kota.index', compact('kota'));
+        $jenisberas = JenisBeras::all();
+        return view('jenis-beras.index', compact('jenisberas'));
     }
 
     /**
@@ -40,19 +40,19 @@ class AsalKotaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama_kota' => 'required|string',
+            'nama_jenis' => 'required|string',
         ]);
-        AsalKota::create($request->all());
-        return redirect()->route('kota.index');
+        JenisBeras::create($request->all());
+        return redirect()->route('jenisberas.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param AsalKota $asalKota
+     * @param JenisBeras $JenisBeras
      * @return Response
      */
-    public function show(AsalKota $asalKota)
+    public function show(JenisBeras $JenisBeras)
     {
         //
     }
@@ -60,13 +60,13 @@ class AsalKotaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param AsalKota $asalKota
+     * @param JenisBeras $JenisBeras
      * @return Response
      */
     public function edit($id)
     {
-        $kota = AsalKota::findOrFail($id);
-        return view('kota.edit', compact('kota'));
+        $jenisberas = JenisBeras::findOrFail($id);
+        return view('jenis-beras.edit', compact('jenisberas'));
     }
 
     /**
@@ -80,12 +80,12 @@ class AsalKotaController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nama_kota' => 'required|string',
+            'nama_jenis' => 'required|string',
         ]);
-        $kota = AsalKota::findOrFail($id);
-        $kota->nama_kota = $request->input('nama_kota');
-        $kota->update();
-        return redirect()->route('kota.index');
+        $jenisberas = JenisBeras::findOrFail($id);
+        $jenisberas->nama_jenis = $request->input('nama_jenis');
+        $jenisberas->update();
+        return redirect()->route('jenisberas.index');
     }
 
     /**
@@ -96,7 +96,7 @@ class AsalKotaController extends Controller
      */
     public function destroy($id)
     {
-        AsalKota::find($id)->delete();
-        return redirect()->route('kota.index');
+        JenisBeras::find($id)->delete();
+        return redirect()->route('jenisberas.index');
     }
 }

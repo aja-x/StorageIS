@@ -35,16 +35,16 @@
                         <div id="submenu-6" class="collapse submenu" style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Asal Kota</a>
+                                    <a class="nav-link" href="{{ route('kota.index') }}">Asal Kota</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Jenis Beras</a>
+                                    <a class="nav-link" href="{{ route('jenisberas.index') }}">Jenis Beras</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Kualitas Beras</a>
+                                    <a class="nav-link" href="{{ route('kualitasberas.index') }}">Kualitas Beras</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Berat Beras</a>
+                                    <a class="nav-link" href="{{ route('berat.index') }}">Berat Beras</a>
                                 </li>
                             </ul>
                         </div>

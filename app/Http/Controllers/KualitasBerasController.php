@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\AsalKota;
+use App\KualitasBeras;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
 
-class AsalKotaController extends Controller
+class KualitasBerasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class AsalKotaController extends Controller
      */
     public function index()
     {
-        $kota = AsalKota::all();
-        return view('kota.index', compact('kota'));
+        $kualitasberas = KualitasBeras::all();
+        return view('kualitas-beras.index', compact('kualitasberas'));
     }
 
     /**
@@ -40,19 +40,19 @@ class AsalKotaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama_kota' => 'required|string',
+            'jenis_kualitas' => 'required|string',
         ]);
-        AsalKota::create($request->all());
-        return redirect()->route('kota.index');
+        KualitasBeras::create($request->all());
+        return redirect()->route('kualitasberas.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param AsalKota $asalKota
+     * @param KualitasBeras $KualitasBeras
      * @return Response
      */
-    public function show(AsalKota $asalKota)
+    public function show(KualitasBeras $KualitasBeras)
     {
         //
     }
@@ -60,13 +60,13 @@ class AsalKotaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param AsalKota $asalKota
+     * @param KualitasBeras $KualitasBeras
      * @return Response
      */
     public function edit($id)
     {
-        $kota = AsalKota::findOrFail($id);
-        return view('kota.edit', compact('kota'));
+        $kualitasberas = KualitasBeras::findOrFail($id);
+        return view('kualitas-beras.edit', compact('kualitasberas'));
     }
 
     /**
@@ -80,12 +80,12 @@ class AsalKotaController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nama_kota' => 'required|string',
+            'jenis_kualitas' => 'required|string',
         ]);
-        $kota = AsalKota::findOrFail($id);
-        $kota->nama_kota = $request->input('nama_kota');
-        $kota->update();
-        return redirect()->route('kota.index');
+        $kualitasberas = KualitasBeras::findOrFail($id);
+        $kualitasberas->jenis_kualitas = $request->input('jenis_kualitas');
+        $kualitasberas->update();
+        return redirect()->route('kualitasberas.index');
     }
 
     /**
@@ -96,7 +96,7 @@ class AsalKotaController extends Controller
      */
     public function destroy($id)
     {
-        AsalKota::find($id)->delete();
-        return redirect()->route('kota.index');
+        KualitasBeras::find($id)->delete();
+        return redirect()->route('kualitasberas.index');
     }
 }
