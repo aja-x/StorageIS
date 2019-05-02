@@ -77,7 +77,7 @@ CREATE TABLE `tb_asal_kota` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,7 +86,7 @@ CREATE TABLE `tb_asal_kota` (
 
 LOCK TABLES `tb_asal_kota` WRITE;
 /*!40000 ALTER TABLE `tb_asal_kota` DISABLE KEYS */;
-INSERT INTO `tb_asal_kota` VALUES (4,'Surabaya','2019-04-30 10:09:50','2019-04-30 10:09:50');
+INSERT INTO `tb_asal_kota` VALUES (5,'Surabaya','2019-05-02 17:29:05','2019-05-02 10:29:05'),(6,'Sidoarjo','2019-05-02 09:13:43','2019-05-02 09:13:43');
 /*!40000 ALTER TABLE `tb_asal_kota` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -246,8 +246,10 @@ DROP TABLE IF EXISTS `tb_jenis_beras`;
 CREATE TABLE `tb_jenis_beras` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_jenis` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -256,6 +258,7 @@ CREATE TABLE `tb_jenis_beras` (
 
 LOCK TABLES `tb_jenis_beras` WRITE;
 /*!40000 ALTER TABLE `tb_jenis_beras` DISABLE KEYS */;
+INSERT INTO `tb_jenis_beras` VALUES (2,'Raja Lele','2019-05-02 09:30:03','2019-05-02 09:30:03');
 /*!40000 ALTER TABLE `tb_jenis_beras` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -269,8 +272,10 @@ DROP TABLE IF EXISTS `tb_jenis_berat_beras`;
 CREATE TABLE `tb_jenis_berat_beras` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `berat` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -279,6 +284,7 @@ CREATE TABLE `tb_jenis_berat_beras` (
 
 LOCK TABLES `tb_jenis_berat_beras` WRITE;
 /*!40000 ALTER TABLE `tb_jenis_berat_beras` DISABLE KEYS */;
+INSERT INTO `tb_jenis_berat_beras` VALUES (2,50,'2019-05-02 09:49:58','2019-05-02 09:49:58');
 /*!40000 ALTER TABLE `tb_jenis_berat_beras` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -324,8 +330,10 @@ DROP TABLE IF EXISTS `tb_kualitas_beras`;
 CREATE TABLE `tb_kualitas_beras` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `jenis_kualitas` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -334,6 +342,7 @@ CREATE TABLE `tb_kualitas_beras` (
 
 LOCK TABLES `tb_kualitas_beras` WRITE;
 /*!40000 ALTER TABLE `tb_kualitas_beras` DISABLE KEYS */;
+INSERT INTO `tb_kualitas_beras` VALUES (2,'Premium','2019-05-02 09:41:24','2019-05-02 09:41:24');
 /*!40000 ALTER TABLE `tb_kualitas_beras` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -439,4 +448,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-01  6:33:36
+-- Dump completed on 2019-05-03  4:55:39
