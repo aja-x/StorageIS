@@ -99,13 +99,15 @@ DROP TABLE IF EXISTS `tb_blok`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_blok` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama_blok` varchar(2) NOT NULL,
-  `kapasitas_blok` int(11) NOT NULL,
-  `sisa_kapasitas_blok` int(11) NOT NULL,
+  `nama_blok` varchar(11) NOT NULL,
+  `kolom` int(11) NOT NULL,
+  `baris` int(11) NOT NULL,
+  `sisa_kapasitas` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=181 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `kolom` (`nama_blok`,`kolom`,`baris`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -114,34 +116,40 @@ CREATE TABLE `tb_blok` (
 
 LOCK TABLES `tb_blok` WRITE;
 /*!40000 ALTER TABLE `tb_blok` DISABLE KEYS */;
-INSERT INTO `tb_blok` VALUES (176,'A',1000,1000,'2019-04-30 04:09:22','2019-04-30 04:09:22'),(177,'B',1000,1000,'2019-04-30 04:09:25','2019-04-30 04:09:25'),(178,'C',1000,1000,'2019-04-30 04:09:34','2019-04-30 04:09:34'),(179,'D',1000,1000,'2019-04-30 04:09:35','2019-04-30 04:09:35'),(180,'E',1000,1000,'2019-04-30 04:09:39','2019-04-30 04:09:39');
+INSERT INTO `tb_blok` VALUES (25,'A',1,1,0,'2019-05-09 19:30:54','2019-05-18 21:03:03'),(26,'A',1,2,0,'2019-05-09 19:30:54','2019-05-18 21:04:05'),(27,'A',2,1,0,'2019-05-09 19:30:54','2019-05-18 21:04:05'),(28,'A',2,2,0,'2019-05-09 19:30:54','2019-05-18 21:04:05'),(29,'B',1,1,0,'2019-05-09 19:30:54','2019-05-18 21:06:37'),(30,'B',1,2,9,'2019-05-09 19:30:54','2019-05-18 21:06:37'),(31,'B',2,1,25,'2019-05-09 19:30:54','2019-05-09 19:30:54'),(32,'B',2,2,25,'2019-05-09 19:30:54','2019-05-09 19:30:54');
 /*!40000 ALTER TABLE `tb_blok` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `tb_blok_detail`
+-- Table structure for table `tb_blok_gudang`
 --
 
-DROP TABLE IF EXISTS `tb_blok_detail`;
+DROP TABLE IF EXISTS `tb_blok_gudang`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tb_blok_detail` (
+CREATE TABLE `tb_blok_gudang` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_gudang` int(11) NOT NULL,
   `id_blok` int(11) NOT NULL,
-  `kolom` int(11) NOT NULL,
-  `baris` int(11) NOT NULL,
-  PRIMARY KEY (`id_blok`,`kolom`,`baris`) USING BTREE,
-  CONSTRAINT `tb_blok_detail_ibfk_1` FOREIGN KEY (`id_blok`) REFERENCES `tb_blok` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `jumlah_karung` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  KEY `id_detail_jalur` (`id_gudang`),
+  KEY `tb_blok_gudang_ibfk_2` (`id_blok`),
+  CONSTRAINT `tb_blok_gudang_ibfk_1` FOREIGN KEY (`id_gudang`) REFERENCES `tb_gudang` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tb_blok_gudang_ibfk_2` FOREIGN KEY (`id_blok`) REFERENCES `tb_blok` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tb_blok_detail`
+-- Dumping data for table `tb_blok_gudang`
 --
 
-LOCK TABLES `tb_blok_detail` WRITE;
-/*!40000 ALTER TABLE `tb_blok_detail` DISABLE KEYS */;
-INSERT INTO `tb_blok_detail` VALUES (176,1,1),(176,1,2),(176,1,3),(176,1,4),(176,1,5),(176,2,1),(176,2,2),(176,2,3),(176,2,4),(176,2,5),(176,3,1),(176,3,2),(176,3,3),(176,3,4),(176,3,5),(176,4,1),(176,4,2),(176,4,3),(176,4,4),(176,4,5),(176,5,1),(176,5,2),(176,5,3),(176,5,4),(176,5,5),(177,1,1),(177,1,2),(177,1,3),(177,1,4),(177,1,5),(177,2,1),(177,2,2),(177,2,3),(177,2,4),(177,2,5),(177,3,1),(177,3,2),(177,3,3),(177,3,4),(177,3,5),(177,4,1),(177,4,2),(177,4,3),(177,4,4),(177,4,5),(177,5,1),(177,5,2),(177,5,3),(177,5,4),(177,5,5),(178,1,1),(178,1,2),(178,1,3),(178,1,4),(178,1,5),(178,2,1),(178,2,2),(178,2,3),(178,2,4),(178,2,5),(178,3,1),(178,3,2),(178,3,3),(178,3,4),(178,3,5),(178,4,1),(178,4,2),(178,4,3),(178,4,4),(178,4,5),(178,5,1),(178,5,2),(178,5,3),(178,5,4),(178,5,5),(179,1,1),(179,1,2),(179,1,3),(179,1,4),(179,1,5),(179,2,1),(179,2,2),(179,2,3),(179,2,4),(179,2,5),(179,3,1),(179,3,2),(179,3,3),(179,3,4),(179,3,5),(179,4,1),(179,4,2),(179,4,3),(179,4,4),(179,4,5),(179,5,1),(179,5,2),(179,5,3),(179,5,4),(179,5,5),(180,1,1),(180,1,2),(180,1,3),(180,1,4),(180,1,5),(180,2,1),(180,2,2),(180,2,3),(180,2,4),(180,2,5),(180,3,1),(180,3,2),(180,3,3),(180,3,4),(180,3,5),(180,4,1),(180,4,2),(180,4,3),(180,4,4),(180,4,5),(180,5,1),(180,5,2),(180,5,3),(180,5,4),(180,5,5);
-/*!40000 ALTER TABLE `tb_blok_detail` ENABLE KEYS */;
+LOCK TABLES `tb_blok_gudang` WRITE;
+/*!40000 ALTER TABLE `tb_blok_gudang` DISABLE KEYS */;
+INSERT INTO `tb_blok_gudang` VALUES (1,5,26,25,'2019-05-18 21:04:05','2019-05-18 21:04:05'),(2,5,27,25,'2019-05-18 21:04:05','2019-05-18 21:04:05'),(3,5,28,25,'2019-05-18 21:04:05','2019-05-18 21:04:05'),(4,5,29,15,'2019-05-18 21:04:05','2019-05-18 21:04:05'),(5,6,29,10,'2019-05-18 21:06:37','2019-05-18 21:06:37'),(6,6,30,16,'2019-05-18 21:06:37','2019-05-18 21:06:37');
+/*!40000 ALTER TABLE `tb_blok_gudang` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -158,24 +166,20 @@ CREATE TABLE `tb_gudang` (
   `id_kualitas_beras` int(11) NOT NULL,
   `id_jenis_berat_beras` int(11) NOT NULL,
   `jumlah_karung` int(11) NOT NULL,
-  `tanggal_masuk` datetime NOT NULL,
-  `tanggal_keluar` datetime NOT NULL,
-  `id_blok` int(11) NOT NULL,
-  `id_jalur` int(11) NOT NULL,
+  `tanggal_masuk` timestamp NULL DEFAULT NULL,
+  `tanggal_keluar` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_asal_kota` (`id_asal_kota`),
   KEY `id_jenis_beras` (`id_jenis_beras`),
   KEY `id_kualitas_beras` (`id_kualitas_beras`),
   KEY `id_jenis_berat_beras` (`id_jenis_berat_beras`),
-  KEY `id_blok` (`id_blok`),
-  KEY `id_jalur` (`id_jalur`),
-  CONSTRAINT `tb_gudang_ibfk_1` FOREIGN KEY (`id_asal_kota`) REFERENCES `tb_asal_kota` (`id`),
-  CONSTRAINT `tb_gudang_ibfk_2` FOREIGN KEY (`id_jenis_beras`) REFERENCES `tb_jenis_beras` (`id`),
-  CONSTRAINT `tb_gudang_ibfk_3` FOREIGN KEY (`id_jalur`) REFERENCES `tb_jalur` (`id`),
-  CONSTRAINT `tb_gudang_ibfk_4` FOREIGN KEY (`id_blok`) REFERENCES `tb_blok` (`id`),
-  CONSTRAINT `tb_gudang_ibfk_5` FOREIGN KEY (`id_jenis_berat_beras`) REFERENCES `tb_jenis_berat_beras` (`id`),
-  CONSTRAINT `tb_gudang_ibfk_6` FOREIGN KEY (`id_kualitas_beras`) REFERENCES `tb_kualitas_beras` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `tb_gudang_ibfk_1` FOREIGN KEY (`id_asal_kota`) REFERENCES `tb_asal_kota` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `tb_gudang_ibfk_2` FOREIGN KEY (`id_jenis_beras`) REFERENCES `tb_jenis_beras` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `tb_gudang_ibfk_5` FOREIGN KEY (`id_jenis_berat_beras`) REFERENCES `tb_jenis_berat_beras` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `tb_gudang_ibfk_6` FOREIGN KEY (`id_kualitas_beras`) REFERENCES `tb_kualitas_beras` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,6 +188,7 @@ CREATE TABLE `tb_gudang` (
 
 LOCK TABLES `tb_gudang` WRITE;
 /*!40000 ALTER TABLE `tb_gudang` DISABLE KEYS */;
+INSERT INTO `tb_gudang` VALUES (1,6,2,3,2,50,'2019-05-18 17:00:00','2019-05-18 17:00:00','2019-05-18 17:00:00','2019-05-18 17:00:00'),(5,5,2,2,2,90,'2019-05-18 21:04:05',NULL,'2019-05-18 21:04:05','2019-05-18 21:04:05'),(6,5,2,2,2,26,'2019-05-18 21:06:36',NULL,'2019-05-18 21:06:37','2019-05-18 21:06:37');
 /*!40000 ALTER TABLE `tb_gudang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -195,10 +200,11 @@ DROP TABLE IF EXISTS `tb_jalur`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_jalur` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_detail_jalur` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_detail_jalur` (`id_detail_jalur`)
+  `id_jalur` int(11) NOT NULL AUTO_INCREMENT,
+  `id_blok` int(11) NOT NULL,
+  `jalur` text NOT NULL,
+  PRIMARY KEY (`id_jalur`) USING BTREE,
+  UNIQUE KEY `id_blok` (`id_blok`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -209,31 +215,6 @@ CREATE TABLE `tb_jalur` (
 LOCK TABLES `tb_jalur` WRITE;
 /*!40000 ALTER TABLE `tb_jalur` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tb_jalur` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tb_jalur_detail`
---
-
-DROP TABLE IF EXISTS `tb_jalur_detail`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tb_jalur_detail` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_blok` int(11) NOT NULL,
-  `urutan_jalur` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_blok` (`id_blok`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tb_jalur_detail`
---
-
-LOCK TABLES `tb_jalur_detail` WRITE;
-/*!40000 ALTER TABLE `tb_jalur_detail` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_jalur_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -249,7 +230,7 @@ CREATE TABLE `tb_jenis_beras` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -258,7 +239,7 @@ CREATE TABLE `tb_jenis_beras` (
 
 LOCK TABLES `tb_jenis_beras` WRITE;
 /*!40000 ALTER TABLE `tb_jenis_beras` DISABLE KEYS */;
-INSERT INTO `tb_jenis_beras` VALUES (2,'Raja Lele','2019-05-02 09:30:03','2019-05-02 09:30:03');
+INSERT INTO `tb_jenis_beras` VALUES (2,'Raja Lele','2019-05-02 09:30:03','2019-05-02 09:30:03'),(3,'Raja Sapi','2019-05-03 22:47:03','2019-05-03 22:47:03');
 /*!40000 ALTER TABLE `tb_jenis_beras` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -275,7 +256,7 @@ CREATE TABLE `tb_jenis_berat_beras` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -333,7 +314,7 @@ CREATE TABLE `tb_kualitas_beras` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -342,7 +323,7 @@ CREATE TABLE `tb_kualitas_beras` (
 
 LOCK TABLES `tb_kualitas_beras` WRITE;
 /*!40000 ALTER TABLE `tb_kualitas_beras` DISABLE KEYS */;
-INSERT INTO `tb_kualitas_beras` VALUES (2,'Premium','2019-05-02 09:41:24','2019-05-02 09:41:24');
+INSERT INTO `tb_kualitas_beras` VALUES (2,'Premium','2019-05-02 09:41:24','2019-05-02 09:41:24'),(3,'Biasa','2019-05-03 22:46:46','2019-05-03 22:46:46');
 /*!40000 ALTER TABLE `tb_kualitas_beras` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -409,6 +390,31 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
+-- Table structure for table `tb_tumpukan`
+--
+
+DROP TABLE IF EXISTS `tb_tumpukan`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_tumpukan` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `maksimal_tumpukan` int(11) NOT NULL,
+  `banyak_karung` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_tumpukan`
+--
+
+LOCK TABLES `tb_tumpukan` WRITE;
+/*!40000 ALTER TABLE `tb_tumpukan` DISABLE KEYS */;
+INSERT INTO `tb_tumpukan` VALUES (1,5,5);
+/*!40000 ALTER TABLE `tb_tumpukan` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -448,4 +454,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-03  4:55:39
+-- Dump completed on 2019-05-19 18:17:32
