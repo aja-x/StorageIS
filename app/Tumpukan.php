@@ -4,14 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BlokDetail extends Model
+class Tumpukan extends Model
 {
-    protected $table = 'tb_blok_detail';
+    protected $table = 'tb_tumpukan';
 
     protected $fillable = [
-        'id_blok',
-        'kolom',
-        'baris',
+        'maksimal_tumpukan',
+        'banyak_karung',
     ];
 
     public $timestamps = false;

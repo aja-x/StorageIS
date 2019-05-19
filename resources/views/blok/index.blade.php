@@ -15,8 +15,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Blok</th>
-                                <th>Kapasitas</th>
-                                <th>Sisa</th>
+                                <th>Sisa Kapasitas</th>
                                 <th>Aksi</th>
                             </tr>
                             </thead>
@@ -25,9 +24,8 @@
                                 @foreach($blok as $data)
                                     <tr>
                                         <td>{{ $i++ }}</td>
-                                        <td>{{ $data->nama_blok }} {{ $data->kolom_blok }} {{ $data->baris_blok }}</td>
-                                        <td>{{ $data->kapasitas_blok }}</td>
-                                        <td>{{ $data->sisa_kapasitas_blok }}</td>
+                                        <td>{{ $data->nama_blok }} {{ $data->kolom }} {{ $data->baris }}</td>
+                                        <td>{{ $data->sisa_kapasitas }}</td>
                                         <td>Hai :)</td>
                                     </tr>
                                 @endforeach

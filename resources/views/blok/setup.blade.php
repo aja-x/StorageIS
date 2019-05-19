@@ -22,8 +22,12 @@
                             <input id="inputText4" type="number" class="form-control" name="kolom" placeholder="Kolom" required>
                         </div>
                         <div class="form-group">
-                            <label for="inputText5" class="col-form-label">Kapasitas Tiap Blok</label>
-                            <input id="inputText5" type="number" class="form-control" name="kapasitas" required>
+                            <label for="inputText5" class="col-form-label">Maksimal Tumpukan</label>
+                            <input id="inputText5" type="number" class="form-control" name="tumpukan" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputText6" class="col-form-label">Banyak Karung Tiap Tumpukan</label>
+                            <input id="inputText6" type="number" class="form-control" name="karung_tumpukan" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </form>

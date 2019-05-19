@@ -22,3 +22,4 @@ Route::resource('kota', 'AsalKotaController');
 Route::resource('jenisberas', 'JenisBerasController');
 Route::resource('kualitasberas', 'KualitasBerasController');
 Route::resource('berat', 'BeratBerasController');
+Route::resource('gudang', 'GudangController');

@@ -24,7 +24,6 @@
                                     <td>{{ $i++ }}</td>
                                     <td>{{ $data->nama_kota }}</td>
                                     <td>
-
                                         <form action="{{ route('kota.destroy', $data->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
