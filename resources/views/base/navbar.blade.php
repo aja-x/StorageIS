@@ -1,3 +1,4 @@
+@inject('notif', 'App\Services\NotificationService')
 <!-- ============================================================== -->
 <!-- navbar -->
 <!-- ============================================================== -->
@@ -15,26 +16,35 @@
 {{--                    </div>--}}
                 </li>
                 <li class="nav-item dropdown notification">
-                    <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span></a>
+                    <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i>
+                        @if($notif->countNavbarNotification() > 0)<span class="indicator"></span>@endif
+                    </a>
                     <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
                         <li>
                             <div class="notification-title"> Notification</div>
                             <div class="notification-list">
                                 <div class="list-group">
-                                    <a href="#" class="list-group-item list-group-item-action active">
-                                        <div class="notification-info">
-                                            <div class="notification-list-user-img"><img src="{{ asset('concept-assets/images/avatar-2.jpg') }}" alt="" class="user-avatar-md rounded-circle"></div>
-                                            <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
-                                                <div class="notification-date">2 min ago</div>
+                                    @if($notif->countNavbarNotification() > 0)
+                                        @foreach($notif->navbarNotification() as $data)
+                                        <a href="#" class="list-group-item list-group-item-action active">
+                                            <div class="notification-info">
+{{--                                                <div class="notification-list-user-img">--}}
+{{--                                                    <img src="{{ asset('concept-assets/images/avatar-2.jpg') }}" alt="" class="user-avatar-md rounded-circle">--}}
+{{--                                                </div>--}}
+                                                <div class="notification-list-user-block">Beras kode <span class="notification-list-user-name">{{ $data[0]['id'] }}</span>kadaluarsa.
+                                                    <br>Tgl masuk: [{{ $notif->ymdToDmy($data[0]['tanggal_masuk']) }}]
+                                                    <div class="notification-date">{{ $notif->countDiffDate($data[0]['tanggal_masuk']) }} hari yang lalu.</div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
+                                        </a>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </li>
-{{--                        <li>--}}
-{{--                            <div class="list-footer"> <a href="#">View all notifications</a></div>--}}
-{{--                        </li>--}}
+                        <li>
+                            <div class="list-footer"> <a href="#">View all notifications</a></div>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown nav-user">
@@ -42,7 +52,7 @@
                     <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                         <div class="nav-user-info">
                             <h5 class="mb-0 text-white nav-user-name"> {{ Auth::user()->name }} </h5>
-{{--                            <span class="status"></span><span class="ml-2">Available</span>--}}
+                            <span class="status"></span><span class="ml-2">Available</span>
                         </div>
                         <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
                         <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
