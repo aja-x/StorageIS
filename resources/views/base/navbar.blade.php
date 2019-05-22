@@ -10,9 +10,9 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto navbar-right-top">
                 <li class="nav-item">
-                    <div id="custom-search" class="top-search-bar">
-                        <input class="form-control" type="text" placeholder="Search..">
-                    </div>
+{{--                    <div id="custom-search" class="top-search-bar">--}}
+{{--                        <input class="form-control" type="text" placeholder="Search..">--}}
+{{--                    </div>--}}
                 </li>
                 <li class="nav-item dropdown notification">
                     <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span></a>
@@ -32,9 +32,9 @@
                                 </div>
                             </div>
                         </li>
-                        <li>
-                            <div class="list-footer"> <a href="#">View all notifications</a></div>
-                        </li>
+{{--                        <li>--}}
+{{--                            <div class="list-footer"> <a href="#">View all notifications</a></div>--}}
+{{--                        </li>--}}
                     </ul>
                 </li>
                 <li class="nav-item dropdown nav-user">
@@ -42,7 +42,7 @@
                     <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                         <div class="nav-user-info">
                             <h5 class="mb-0 text-white nav-user-name"> {{ Auth::user()->name }} </h5>
-                            <span class="status"></span><span class="ml-2">Available</span>
+{{--                            <span class="status"></span><span class="ml-2">Available</span>--}}
                         </div>
                         <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
                         <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>

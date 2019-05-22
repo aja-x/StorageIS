@@ -15,11 +15,11 @@ Route::get('/', 'Auth\LoginController@showLoginForm');
 
 Auth::routes();
 
-Route::get('/dashboard', 'HomeController@index')->name('home');
-Route::resource('blok', 'BlokController');
-Route::post('/blok/setup', 'BlokController@setup')->name('blok.setup');
-Route::resource('kota', 'AsalKotaController');
-Route::resource('jenisberas', 'JenisBerasController');
-Route::resource('kualitasberas', 'KualitasBerasController');
-Route::resource('berat', 'BeratBerasController');
-Route::resource('gudang', 'GudangController');
+Route::get('/dashboard', 'HomeController@index')->name('home')->middleware('auth');
+Route::resource('blok', 'BlokController')->middleware('auth');
+Route::post('/blok/setup', 'BlokController@setup')->name('blok.setup')->middleware('auth');
+Route::resource('kota', 'AsalKotaController')->middleware('auth');
+Route::resource('jenisberas', 'JenisBerasController')->middleware('auth');
+Route::resource('kualitasberas', 'KualitasBerasController')->middleware('auth');
+Route::resource('berat', 'BeratBerasController')->middleware('auth');
+Route::resource('gudang', 'GudangController')->middleware('auth');

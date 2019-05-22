@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Blok;
 use App\Tumpukan;
+use App\Jalur;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -73,10 +74,19 @@ class BlokController extends Controller
         $tumpukan->banyak_karung = $request->input('karung_tumpukan');
         $tumpukan->save();
 
+        // Buat jalur
         foreach (range(1, $request->input('banyak-blok')) as $banyak_blok) {
-            for($i = 1; $i <= $request->input('banyak-blok'); $i += 2) {
-
+            $res = [];
+            $jalur = new Jalur();
+            $jalur->nama_blok = chr(64 + $banyak_blok);
+            for($i = 1; ($i - 1 < $banyak_blok); $i++) {
+                if($banyak_blok % 2 == 0 && $i % 2 == 0)
+                    array_push($res, chr(64 + $i));
+                else if($banyak_blok % 2 != 0 && $i % 2 != 0)
+                    array_push($res, chr(64 + $i));
             }
+            $jalur->jalur = implode('-', $res);
+            $jalur->save();
         }
         return redirect()->route('blok.index');
     }

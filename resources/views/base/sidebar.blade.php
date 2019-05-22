@@ -18,7 +18,7 @@
                         <a class="nav-link active" href="{{ route('home') }}" aria-expanded="false">
                             <i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span>
                         </a>
-                        <a class="nav-link" href="{{ route('gudang.create') }}">
+                        <a class="nav-link" href="{{ route('gudang.index') }}">
                             <i class="fas fa-fw fa-warehouse"></i> Gudang
                         </a>
                         <a class="nav-link" href="{{ route('blok.index') }}">

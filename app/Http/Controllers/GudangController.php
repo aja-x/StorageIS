@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Blok;
 use App\Gudang;
+use App\VGudang;
 use App\AsalKota;
 use App\JenisBeras;
 use App\KualitasBeras;
@@ -13,6 +14,15 @@ use Illuminate\Http\Request;
 
 class GudangController extends Controller
 {
+
+    public function __construct()
+    {
+        if(Blok::all()->count() == 0)
+        {
+           return view('blok.setup');
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +30,8 @@ class GudangController extends Controller
      */
     public function index()
     {
-        //
+        $v_gudang = VGudang::all();
+        return view('gudang.index', compact('v_gudang'));
     }
 
     /**
@@ -30,11 +41,18 @@ class GudangController extends Controller
      */
     public function create()
     {
-        $kota = AsalKota::all();
-        $jenisberas = JenisBeras::all();
-        $kualitasberas = KualitasBeras::all();
-        $berat = BeratBeras::all();
-        return view('gudang.create', compact('kota', 'jenisberas', 'kualitasberas', 'berat'));
+        if(Blok::all()->count() > 0)
+        {
+            $kota = AsalKota::all();
+            $jenisberas = JenisBeras::all();
+            $kualitasberas = KualitasBeras::all();
+            $berat = BeratBeras::all();
+            return view('gudang.create', compact('kota', 'jenisberas', 'kualitasberas', 'berat'));
+        }
+        else
+        {
+            return view('blok.setup');
+        }
     }
 
     /**
@@ -45,7 +63,6 @@ class GudangController extends Controller
      */
     public function store(Request $request)
     {
-//        echo dd($request);
         $gudang = new Gudang();
         $gudang->id_asal_kota = $request->input('kota');
         $gudang->id_jenis_beras = $request->input('jenis_beras');
@@ -55,6 +72,7 @@ class GudangController extends Controller
         $gudang->tanggal_masuk = date('Y-m-d H:i:s');
         $gudang->save();
 
+        // Masukkan karung ke blok
         $last_gudang = Gudang::orderBy('id', 'desc')->first();
         $jumlah_karung = $last_gudang->jumlah_karung;
 
