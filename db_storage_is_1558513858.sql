@@ -107,7 +107,7 @@ CREATE TABLE `tb_blok` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `kolom` (`nama_blok`,`kolom`,`baris`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=109 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -116,7 +116,7 @@ CREATE TABLE `tb_blok` (
 
 LOCK TABLES `tb_blok` WRITE;
 /*!40000 ALTER TABLE `tb_blok` DISABLE KEYS */;
-INSERT INTO `tb_blok` VALUES (25,'A',1,1,0,'2019-05-09 19:30:54','2019-05-18 21:03:03'),(26,'A',1,2,0,'2019-05-09 19:30:54','2019-05-18 21:04:05'),(27,'A',2,1,0,'2019-05-09 19:30:54','2019-05-18 21:04:05'),(28,'A',2,2,0,'2019-05-09 19:30:54','2019-05-18 21:04:05'),(29,'B',1,1,0,'2019-05-09 19:30:54','2019-05-18 21:06:37'),(30,'B',1,2,9,'2019-05-09 19:30:54','2019-05-18 21:06:37'),(31,'B',2,1,25,'2019-05-09 19:30:54','2019-05-09 19:30:54'),(32,'B',2,2,25,'2019-05-09 19:30:54','2019-05-09 19:30:54');
+INSERT INTO `tb_blok` VALUES (93,'A',1,1,0,'2019-05-21 22:34:08','2019-05-21 22:41:47'),(94,'A',1,2,0,'2019-05-21 22:34:08','2019-05-21 22:41:47'),(95,'A',2,1,0,'2019-05-21 22:34:08','2019-05-21 22:41:47'),(96,'A',2,2,0,'2019-05-21 22:34:08','2019-05-21 22:41:47'),(97,'B',1,1,25,'2019-05-21 22:34:08','2019-05-21 22:34:08'),(98,'B',1,2,25,'2019-05-21 22:34:08','2019-05-21 22:34:08'),(99,'B',2,1,25,'2019-05-21 22:34:08','2019-05-21 22:34:08'),(100,'B',2,2,25,'2019-05-21 22:34:08','2019-05-21 22:34:08'),(101,'C',1,1,25,'2019-05-21 22:34:08','2019-05-21 22:34:08'),(102,'C',1,2,25,'2019-05-21 22:34:08','2019-05-21 22:34:08'),(103,'C',2,1,25,'2019-05-21 22:34:08','2019-05-21 22:34:08'),(104,'C',2,2,25,'2019-05-21 22:34:08','2019-05-21 22:34:08'),(105,'D',1,1,25,'2019-05-21 22:34:08','2019-05-21 22:34:08'),(106,'D',1,2,25,'2019-05-21 22:34:08','2019-05-21 22:34:08'),(107,'D',2,1,25,'2019-05-21 22:34:08','2019-05-21 22:34:08'),(108,'D',2,2,25,'2019-05-21 22:34:08','2019-05-21 22:34:08');
 /*!40000 ALTER TABLE `tb_blok` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -139,7 +139,7 @@ CREATE TABLE `tb_blok_gudang` (
   KEY `tb_blok_gudang_ibfk_2` (`id_blok`),
   CONSTRAINT `tb_blok_gudang_ibfk_1` FOREIGN KEY (`id_gudang`) REFERENCES `tb_gudang` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tb_blok_gudang_ibfk_2` FOREIGN KEY (`id_blok`) REFERENCES `tb_blok` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -148,7 +148,7 @@ CREATE TABLE `tb_blok_gudang` (
 
 LOCK TABLES `tb_blok_gudang` WRITE;
 /*!40000 ALTER TABLE `tb_blok_gudang` DISABLE KEYS */;
-INSERT INTO `tb_blok_gudang` VALUES (1,5,26,25,'2019-05-18 21:04:05','2019-05-18 21:04:05'),(2,5,27,25,'2019-05-18 21:04:05','2019-05-18 21:04:05'),(3,5,28,25,'2019-05-18 21:04:05','2019-05-18 21:04:05'),(4,5,29,15,'2019-05-18 21:04:05','2019-05-18 21:04:05'),(5,6,29,10,'2019-05-18 21:06:37','2019-05-18 21:06:37'),(6,6,30,16,'2019-05-18 21:06:37','2019-05-18 21:06:37');
+INSERT INTO `tb_blok_gudang` VALUES (7,7,93,25,'2019-05-21 22:41:47','2019-05-21 22:41:47'),(8,7,94,25,'2019-05-21 22:41:47','2019-05-21 22:41:47'),(9,7,95,25,'2019-05-21 22:41:47','2019-05-21 22:41:47'),(10,7,96,25,'2019-05-21 22:41:47','2019-05-21 22:41:47');
 /*!40000 ALTER TABLE `tb_blok_gudang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -179,7 +179,7 @@ CREATE TABLE `tb_gudang` (
   CONSTRAINT `tb_gudang_ibfk_2` FOREIGN KEY (`id_jenis_beras`) REFERENCES `tb_jenis_beras` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `tb_gudang_ibfk_5` FOREIGN KEY (`id_jenis_berat_beras`) REFERENCES `tb_jenis_berat_beras` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `tb_gudang_ibfk_6` FOREIGN KEY (`id_kualitas_beras`) REFERENCES `tb_kualitas_beras` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -188,7 +188,7 @@ CREATE TABLE `tb_gudang` (
 
 LOCK TABLES `tb_gudang` WRITE;
 /*!40000 ALTER TABLE `tb_gudang` DISABLE KEYS */;
-INSERT INTO `tb_gudang` VALUES (1,6,2,3,2,50,'2019-05-18 17:00:00','2019-05-18 17:00:00','2019-05-18 17:00:00','2019-05-18 17:00:00'),(5,5,2,2,2,90,'2019-05-18 21:04:05',NULL,'2019-05-18 21:04:05','2019-05-18 21:04:05'),(6,5,2,2,2,26,'2019-05-18 21:06:36',NULL,'2019-05-18 21:06:37','2019-05-18 21:06:37');
+INSERT INTO `tb_gudang` VALUES (7,5,2,2,2,100,'2019-05-21 22:41:47',NULL,'2019-05-21 22:41:47','2019-05-21 22:41:47');
 /*!40000 ALTER TABLE `tb_gudang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -201,11 +201,13 @@ DROP TABLE IF EXISTS `tb_jalur`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_jalur` (
   `id_jalur` int(11) NOT NULL AUTO_INCREMENT,
-  `id_blok` int(11) NOT NULL,
+  `nama_blok` varchar(32) NOT NULL,
   `jalur` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id_jalur`) USING BTREE,
-  UNIQUE KEY `id_blok` (`id_blok`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  UNIQUE KEY `id_blok` (`nama_blok`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -214,6 +216,7 @@ CREATE TABLE `tb_jalur` (
 
 LOCK TABLES `tb_jalur` WRITE;
 /*!40000 ALTER TABLE `tb_jalur` DISABLE KEYS */;
+INSERT INTO `tb_jalur` VALUES (10,'A','A','2019-05-21 22:34:08','2019-05-21 22:34:08'),(11,'B','B','2019-05-21 22:34:08','2019-05-21 22:34:08'),(12,'C','A-C','2019-05-21 22:34:08','2019-05-21 22:34:08'),(13,'D','B-D','2019-05-21 22:34:09','2019-05-21 22:34:09');
 /*!40000 ALTER TABLE `tb_jalur` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -401,7 +404,7 @@ CREATE TABLE `tb_tumpukan` (
   `maksimal_tumpukan` int(11) NOT NULL,
   `banyak_karung` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -410,7 +413,7 @@ CREATE TABLE `tb_tumpukan` (
 
 LOCK TABLES `tb_tumpukan` WRITE;
 /*!40000 ALTER TABLE `tb_tumpukan` DISABLE KEYS */;
-INSERT INTO `tb_tumpukan` VALUES (1,5,5);
+INSERT INTO `tb_tumpukan` VALUES (8,5,5);
 /*!40000 ALTER TABLE `tb_tumpukan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -444,6 +447,51 @@ LOCK TABLES `users` WRITE;
 INSERT INTO `users` VALUES (1,'yuuki','admin@yuuki.com',NULL,'$2y$10$xUnaePHzHWXGYUw33bOqtOm96xUjBMdaKu05mq3IFN5WgSLp9Vs6a',NULL,'2019-04-29 06:18:19','2019-04-29 06:18:19');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary table structure for view `v_gudang`
+--
+
+DROP TABLE IF EXISTS `v_gudang`;
+/*!50001 DROP VIEW IF EXISTS `v_gudang`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `v_gudang` (
+  `nama_kota` tinyint NOT NULL,
+  `nama_jenis` tinyint NOT NULL,
+  `jenis_kualitas` tinyint NOT NULL,
+  `berat` tinyint NOT NULL,
+  `id` tinyint NOT NULL,
+  `id_asal_kota` tinyint NOT NULL,
+  `id_jenis_beras` tinyint NOT NULL,
+  `id_kualitas_beras` tinyint NOT NULL,
+  `id_jenis_berat_beras` tinyint NOT NULL,
+  `jumlah_karung` tinyint NOT NULL,
+  `tanggal_masuk` tinyint NOT NULL,
+  `tanggal_keluar` tinyint NOT NULL,
+  `created_at` tinyint NOT NULL,
+  `updated_at` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Final view structure for view `v_gudang`
+--
+
+/*!50001 DROP TABLE IF EXISTS `v_gudang`*/;
+/*!50001 DROP VIEW IF EXISTS `v_gudang`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`yuuki`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `v_gudang` AS select `k`.`nama_kota` AS `nama_kota`,`jb`.`nama_jenis` AS `nama_jenis`,`kb`.`jenis_kualitas` AS `jenis_kualitas`,`bb`.`berat` AS `berat`,`g`.`id` AS `id`,`g`.`id_asal_kota` AS `id_asal_kota`,`g`.`id_jenis_beras` AS `id_jenis_beras`,`g`.`id_kualitas_beras` AS `id_kualitas_beras`,`g`.`id_jenis_berat_beras` AS `id_jenis_berat_beras`,`g`.`jumlah_karung` AS `jumlah_karung`,`g`.`tanggal_masuk` AS `tanggal_masuk`,`g`.`tanggal_keluar` AS `tanggal_keluar`,`g`.`created_at` AS `created_at`,`g`.`updated_at` AS `updated_at` from ((((`tb_gudang` `g` join `tb_asal_kota` `k` on(`g`.`id_asal_kota` = `k`.`id`)) join `tb_jenis_beras` `jb` on(`g`.`id_jenis_beras` = `jb`.`id`)) join `tb_kualitas_beras` `kb` on(`g`.`id_kualitas_beras` = `kb`.`id`)) join `tb_jenis_berat_beras` `bb` on(`g`.`id_jenis_berat_beras` = `bb`.`id`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -454,4 +502,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-19 18:17:32
+-- Dump completed on 2019-05-22 15:31:02
