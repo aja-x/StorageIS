@@ -130,11 +130,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/blok/show.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="198">
-              <caret line="43" column="119" selection-start-line="43" selection-start-column="119" selection-end-line="43" selection-end-column="119" />
+              <caret line="43" column="152" selection-start-line="43" selection-start-column="152" selection-end-line="43" selection-end-column="152" />
             </state>
           </provider>
         </entry>
@@ -169,11 +169,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/blok/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="31" selection-end-column="48" />
+            <state relative-caret-position="73">
+              <caret line="4" column="61" selection-start-line="4" selection-start-column="61" selection-end-line="4" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -303,12 +303,12 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/d8dd47eb-a1bd-4f8c-a6e1-3084365ab192/console.sql" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
         <option value="$PROJECT_DIR$/config/database.php" />
-        <option value="$PROJECT_DIR$/resources/views/blok/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/BlokController.php" />
         <option value="$PROJECT_DIR$/app/Services/BlockService.php" />
         <option value="$PROJECT_DIR$/app/Services/BlokServices.php" />
         <option value="$PROJECT_DIR$/app/Services/GudangServices.php" />
         <option value="$PROJECT_DIR$/resources/views/blok/show.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/blok/index.blade.php" />
       </list>
     </option>
   </component>
@@ -614,12 +614,12 @@
       <workItem from="1558959119774" duration="1776000" />
       <workItem from="1558961552792" duration="1216000" />
       <workItem from="1559016170322" duration="1061000" />
-      <workItem from="1559054541358" duration="4545000" />
+      <workItem from="1559054541358" duration="4842000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="168754000" />
+    <option name="totallyTimeSpent" value="169051000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -632,7 +632,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1368" height="748" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49671054" visible="true" weight="0.18181819" />
       <window_info id="Structure" order="1" sideWeight="0.50328946" side_tool="true" weight="0.19924243" />
@@ -960,13 +959,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/blok/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="31" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/gudang/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="122">
@@ -1018,7 +1010,14 @@
     <entry file="file://$PROJECT_DIR$/resources/views/blok/show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
-          <caret line="43" column="119" selection-start-line="43" selection-start-column="119" selection-end-line="43" selection-end-column="119" />
+          <caret line="43" column="152" selection-start-line="43" selection-start-column="152" selection-end-line="43" selection-end-column="152" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/blok/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="73">
+          <caret line="4" column="61" selection-start-line="4" selection-start-column="61" selection-end-line="4" selection-end-column="61" />
         </state>
       </provider>
     </entry>
