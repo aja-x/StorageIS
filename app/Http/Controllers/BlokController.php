@@ -7,6 +7,7 @@ use App\Tumpukan;
 use App\Jalur;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class BlokController extends Controller
 {
@@ -29,7 +30,7 @@ class BlokController extends Controller
     {
         if(Blok::all()->count() > 0)
         {
-            $blok = Blok::all();
+            $blok = Blok::selectRaw('nama_blok, SUM(sisa_kapasitas) as sisa_kapasitas')->groupBy('nama_blok')->get();
             return view('blok.index', compact('blok'));
         }
         else
@@ -108,9 +109,12 @@ class BlokController extends Controller
      * @param Blok $blok
      * @return Response
      */
-    public function show(Blok $blok)
+    public function show($nama_blok)
     {
-        //
+//        $blok = Blok::select('tb_blok.*', 'tb_blok_gudang.id_gudang')->join('tb_blok_gudang', 'tb_blok.id', '=', 'tb_blok_gudang.id_blok')->where('nama_blok', '=', $nama_blok)->get();
+        $blok = Blok::where('nama_blok', '=', $nama_blok)->get();
+            return view('blok.show', compact('blok'));
+
     }
 
     /**

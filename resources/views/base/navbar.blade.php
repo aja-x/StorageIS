@@ -21,7 +21,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
                         <li>
-                            <div class="notification-title"> Notification</div>
+                            <div class="notification-title"> Notifikasi</div>
                             <div class="notification-list">
                                 <div class="list-group">
                                     @if($notif->countNavbarNotification() > 0)
@@ -38,24 +38,36 @@
                                             </div>
                                         </a>
                                         @endforeach
+                                    @else
+                                        <div class="notification-info">
+{{--                                            <div class="notification-list-user-img">--}}
+{{--                                                <img src="{{ asset('concept-assets/images/avatar-2.jpg') }}" alt="" class="user-avatar-md rounded-circle">--}}
+{{--                                            </div>--}}
+                                            <div class="notification-list-user-block">
+                                                <br>
+                                                Tidak ada notifikasi
+                                            </div>
+                                        </div>
                                     @endif
                                 </div>
                             </div>
                         </li>
-                        <li>
-                            <div class="list-footer"> <a href="#">View all notifications</a></div>
-                        </li>
+{{--                        <li>--}}
+{{--                            <div class="list-footer"> <a href="#">View all notifications</a></div>--}}
+{{--                        </li>--}}
                     </ul>
                 </li>
                 <li class="nav-item dropdown nav-user">
-                    <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('concept-assets/images/avatar-1.jpg') }}" alt="" class="user-avatar-md rounded-circle"></a>
+                    <a class="nav-link text-white" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #5969ff">
+                        Hai, {{ Auth::user()->name }} &nbsp<span class="fa fa-angle-down"></span>
+                    </a>
                     <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                         <div class="nav-user-info">
                             <h5 class="mb-0 text-white nav-user-name"> {{ Auth::user()->name }} </h5>
-                            <span class="status"></span><span class="ml-2">Available</span>
+{{--                            <span class="status"></span><span class="ml-2">Available</span>--}}
                         </div>
-                        <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+{{--                        <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>--}}
+{{--                        <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>--}}
 
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();

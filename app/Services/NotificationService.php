@@ -10,13 +10,13 @@ class NotificationService
 {
     public function navbarNotification()
     {
-        $gudang = Gudang::whereRaw('tanggal_masuk + INTERVAL 3 MONTH < CURRENT_TIMESTAMP')->get();
+        $gudang = Gudang::whereRaw('tanggal_masuk + INTERVAL 3 MONTH < CURRENT_TIMESTAMP AND tanggal_keluar IS NULL')->get();
         return compact('gudang');
     }
 
     public function countNavbarNotification()
     {
-        $gudang = Gudang::whereRaw('tanggal_masuk + INTERVAL 3 MONTH < CURRENT_TIMESTAMP')->count();
+        $gudang = Gudang::whereRaw('tanggal_masuk + INTERVAL 3 MONTH < CURRENT_TIMESTAMP AND tanggal_keluar IS NULL')->count();
         return $gudang;
     }
 

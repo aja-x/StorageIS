@@ -23,3 +23,4 @@ Route::resource('jenisberas', 'JenisBerasController')->middleware('auth');
 Route::resource('kualitasberas', 'KualitasBerasController')->middleware('auth');
 Route::resource('berat', 'BeratBerasController')->middleware('auth');
 Route::resource('gudang', 'GudangController')->middleware('auth');
+Route::get('gudang/{gudang}/checkout', 'GudangController@checkout')->name('gudang.checkout')->middleware('auth');

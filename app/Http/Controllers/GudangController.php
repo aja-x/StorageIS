@@ -10,6 +10,7 @@ use App\JenisBeras;
 use App\KualitasBeras;
 use App\BeratBeras;
 use App\BlokGudang;
+use App\Services\GudangServices;
 use Illuminate\Http\Request;
 
 class GudangController extends Controller
@@ -103,9 +104,14 @@ class GudangController extends Controller
      * @param  \App\Gudang  $gudang
      * @return \Illuminate\Http\Response
      */
-    public function show(Gudang $gudang)
+    public function show($id)
     {
-        //
+        $gudang = VGudang::find($id);
+        $blok_gudang = BlokGudang::where('id_gudang', '=', $id)
+            ->join('tb_blok', 'tb_blok_gudang.id_blok', '=', 'tb_blok.id')
+            ->join('tb_jalur', 'tb_blok.nama_blok', '=', 'tb_jalur.nama_blok')
+            ->get();
+        return view('gudang.show', compact('gudang', 'blok_gudang'));
     }
 
     /**
@@ -129,6 +135,19 @@ class GudangController extends Controller
     public function update(Request $request, Gudang $gudang)
     {
         //
+    }
+
+    /**
+     * @param $id
+     */
+    public function checkout($id)
+    {
+        $gudang = Gudang::find($id);
+        $gudang->tanggal_keluar = date('Y-m-d H:i:s');
+        $gudang->update();
+        return redirect()->route('gudang.index');
+//        $gudang_services = new GudangServices();
+//        $gudang_services->isExpired($gudang->tanggal_masuk);
     }
 
     /**
