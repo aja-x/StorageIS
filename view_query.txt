@@ -1,0 +1,5 @@
+CREATE VIEW v_blok_gudang AS
+SELECT bg.*, b.nama_blok, b.kolom, b.baris, j.jalur
+FROM tb_blok_gudang bg
+JOIN tb_blok b ON bg.id_blok = b.id
+JOIN tb_jalur j ON b.nama_blok = j.nama_blok

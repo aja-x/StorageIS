@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Blok;
 use App\Gudang;
+use App\Services\BlokServices;
 use App\VGudang;
 use App\AsalKota;
 use App\JenisBeras;
@@ -42,18 +43,11 @@ class GudangController extends Controller
      */
     public function create()
     {
-        if(Blok::all()->count() > 0)
-        {
-            $kota = AsalKota::all();
-            $jenisberas = JenisBeras::all();
-            $kualitasberas = KualitasBeras::all();
-            $berat = BeratBeras::all();
-            return view('gudang.create', compact('kota', 'jenisberas', 'kualitasberas', 'berat'));
-        }
-        else
-        {
-            return view('blok.setup');
-        }
+        $kota = AsalKota::all();
+        $jenisberas = JenisBeras::all();
+        $kualitasberas = KualitasBeras::all();
+        $berat = BeratBeras::all();
+        return view('gudang.create', compact('kota', 'jenisberas', 'kualitasberas', 'berat'));
     }
 
     /**
@@ -79,7 +73,7 @@ class GudangController extends Controller
 
         $blok = Blok::all()->where('sisa_kapasitas', '>', 0);
         foreach ($blok as $item) {
-            if ($jumlah_karung == 0)
+            if ($jumlah_karung <= 0)
                 break;
             $blok_gudang = new BlokGudang();
             $blok_gudang->id_gudang = $last_gudang->id;
@@ -91,10 +85,11 @@ class GudangController extends Controller
             } else {
                 $blok_gudang->jumlah_karung = $jumlah_karung;
                 Blok::where('id', $item->id)->update(['sisa_kapasitas' => $item->sisa_kapasitas - $jumlah_karung]);
-                $jumlah_karung = 0;
+                $jumlah_karung -= $item->sisa_kapasitas;
             }
             $blok_gudang->save();
         }
+        (new GudangServices())->qrValue(VGudang::orderBy('id', 'desc')->first());
         return redirect()->route('gudang.index');
     }
 

@@ -6,7 +6,7 @@ use App\Gudang;
 use DateTime;
 use Exception;
 
-class NotificationService
+class NotificationServices
 {
     public function navbarNotification()
     {

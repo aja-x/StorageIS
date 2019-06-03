@@ -1,4 +1,4 @@
-@inject('notif', 'App\Services\NotificationService')
+@inject('notif', 'App\Services\NotificationServices')
 <!-- ============================================================== -->
 <!-- navbar -->
 <!-- ============================================================== -->
@@ -11,29 +11,29 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto navbar-right-top">
                 <li class="nav-item">
-{{--                    <div id="custom-search" class="top-search-bar">--}}
-{{--                        <input class="form-control" type="text" placeholder="Search..">--}}
-{{--                    </div>--}}
+                    {{--                    <div id="custom-search" class="top-search-bar">--}}
+                    {{--                        <input class="form-control" type="text" placeholder="Search..">--}}
+                    {{--                    </div>--}}
                 </li>
                 <li class="nav-item dropdown notification">
                     <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i>
-                        @if($notif->countNavbarNotification() > 0)<span class="indicator"></span>@endif
+                    @if($notif->countNavbarNotification() > 0)<span class="indicator"></span>@endif
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
                         <li>
                             <div class="notification-title"> Notifikasi</div>
                             <div class="notification-list">
                                 <div class="list-group">
-                                    @if($notif->countNavbarNotification() > 0)
-                                        @foreach($notif->navbarNotification() as $data)
-                                        <a href="#" class="list-group-item list-group-item-action active">
+                                @if($notif->countNavbarNotification() > 0)
+                                        @foreach($notif->navbarNotification()['gudang'] as $data)
+                                        <a href="{{ route('gudang.show', $data->id) }}" class="list-group-item list-group-item-action active">
                                             <div class="notification-info">
 {{--                                                <div class="notification-list-user-img">--}}
 {{--                                                    <img src="{{ asset('concept-assets/images/avatar-2.jpg') }}" alt="" class="user-avatar-md rounded-circle">--}}
 {{--                                                </div>--}}
-                                                <div class="notification-list-user-block">Beras kode <span class="notification-list-user-name">{{ $data[0]['id'] }}</span>kadaluarsa.
-                                                    <br>Tgl masuk: [{{ $notif->ymdToDmy($data[0]['tanggal_masuk']) }}]
-                                                    <div class="notification-date">{{ $notif->countDiffDate($data[0]['tanggal_masuk']) }} hari yang lalu.</div>
+                                                <div class="notification-list-user-block">Beras ID <span class="badge badge-primary">{{ $data->id }}</span> kadaluarsa.
+                                                    <br>Tgl masuk: [{{ $notif->ymdToDmy($data->tanggal_masuk) }}]
+                                                    <div class="notification-date">{{ $notif->countDiffDate($data->tanggal_masuk) }} hari yang lalu.</div>
                                                 </div>
                                             </div>
                                         </a>

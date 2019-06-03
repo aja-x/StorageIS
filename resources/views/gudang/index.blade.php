@@ -19,7 +19,7 @@
                         <table id="example" class="table table-striped table-bordered second" style="width:100%">
                             <thead>
                             <tr>
-                                <th>No</th>
+                                <th>ID</th>
                                 <th>Kota</th>
                                 <th>Jenis</th>
                                 <th>Kualitas</th>
@@ -32,10 +32,9 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @php( $i = 1 )
                                 @foreach($v_gudang as $data)
                                     <tr>
-                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $data->id }}</td>
                                         <td>{{ $data->nama_kota }}</td>
                                         <td>{{ $data->nama_jenis }}</td>
                                         <td>{{ $data->jenis_kualitas }}</td>
