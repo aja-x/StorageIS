@@ -22,7 +22,7 @@ class RedirectIfAuthenticated
             if (Blok::all()->count() > 0) {
                 return redirect('/dashboard');
             } else {
-                return redirect('/blok');
+                return view('blok.setup');
             }
         }
 

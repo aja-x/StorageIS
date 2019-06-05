@@ -17,15 +17,15 @@
                 </li>
                 <li class="nav-item dropdown notification">
                     <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i>
-                    @if($notif->countNavbarNotification() > 0)<span class="indicator"></span>@endif
+                    @if($notif->countBerasExpired() > 0)<span class="indicator"></span>@endif
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
                         <li>
                             <div class="notification-title"> Notifikasi</div>
                             <div class="notification-list">
                                 <div class="list-group">
-                                @if($notif->countNavbarNotification() > 0)
-                                        @foreach($notif->navbarNotification()['gudang'] as $data)
+                                @if($notif->countBerasExpired() > 0)
+                                        @foreach($notif->getBerasExpired()['gudang'] as $data)
                                         <a href="{{ route('gudang.show', $data->id) }}" class="list-group-item list-group-item-action active">
                                             <div class="notification-info">
 {{--                                                <div class="notification-list-user-img">--}}

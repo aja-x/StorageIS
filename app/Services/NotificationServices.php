@@ -8,13 +8,13 @@ use Exception;
 
 class NotificationServices
 {
-    public function navbarNotification()
+    public function getBerasExpired()
     {
         $gudang = Gudang::whereRaw('tanggal_masuk + INTERVAL 3 MONTH < CURRENT_TIMESTAMP AND tanggal_keluar IS NULL')->get();
         return compact('gudang');
     }
 
-    public function countNavbarNotification()
+    public function countBerasExpired()
     {
         $gudang = Gudang::whereRaw('tanggal_masuk + INTERVAL 3 MONTH < CURRENT_TIMESTAMP AND tanggal_keluar IS NULL')->count();
         return $gudang;
@@ -35,5 +35,4 @@ class NotificationServices
     {
         return date('d-m-Y H:i:s', strtotime($tgl));
     }
-
 }

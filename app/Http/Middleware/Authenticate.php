@@ -18,8 +18,5 @@ class Authenticate extends Middleware
         if (! $request->expectsJson()) {
             return route('login');
         }
-        if (Blok::all()->count() == 0) {
-            return route('blok.index');
-        }
     }
 }

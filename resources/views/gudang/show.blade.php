@@ -1,5 +1,6 @@
 @extends('base.app')
 @section('content')
+    @inject('gudang_service', 'App\Services\GudangServices')
     {{--<div class="ecommerce-widget">--}}
     <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
@@ -30,7 +31,11 @@
                             @foreach($blok_gudang as $data)
                                 <tr>
                                     <td>{{ $i++ }}</td>
-                                    <td>{{ $data->nama_blok }} {{ $data->kolom }} {{ $data->baris }}</td>
+                                    <td>
+                                        <a href="{{ route('blok.show', $data->nama_blok) }}">
+                                            <span class="badge badge-info">{{ $data->nama_blok }} {{ $data->kolom }} {{ $data->baris }}</span>
+                                        </a>
+                                    </td>
                                     <td>{{ $data->jumlah_karung }}</td>
                                     <td><span class="badge badge-info">{{ $data->jalur }}</span></td>
                                 </tr>
@@ -141,7 +146,6 @@
                                                 <td>Status</td>
                                                 <td>:&nbsp</td>
                                                 <td>
-                                                    @inject('gudang_service', 'App\Services\GudangServices')
                                                     @if($gudang_service->isExpired($gudang->id))
                                                         <span class="badge badge-danger text-white">Expired</span>
                                                     @else

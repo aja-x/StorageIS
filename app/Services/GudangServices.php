@@ -3,6 +3,7 @@
 
 namespace App\Services;
 
+use App\Blok;
 use App\VBlokGudang;
 use DateTime;
 use Exception;
@@ -15,12 +16,13 @@ class GudangServices
     {
         $gudang = Gudang::find($id);
         try {
+            date_default_timezone_set('Asia/Jakarta');
             $tanggal_masuk = new DateTime($gudang->tanggal_masuk);
             $tanggal_sekarang = new DateTime(date('Y-m-d H:i:s'));
             if($gudang->tanggal_keluar != "") {
                 $tanggal_sekarang = new DateTime($gudang->tanggal_keluar);
             }
-            return ($tanggal_masuk->diff($tanggal_sekarang)->m < 3 && $gudang->tanggal_keluar == "") ? false : true;
+            return ($tanggal_masuk->diff($tanggal_sekarang)->m < 3) ? false : true;
         } catch (Exception $e) {
             return false;
         }
@@ -53,5 +55,11 @@ class GudangServices
         $last_gudang = Gudang::find($gudang['id']);
         $last_gudang->qr_code = $imagename . ".png";
         $last_gudang->update();
+    }
+
+    public function findIdBlok($id)
+    {
+        $blok = Blok::select('id')->where('id', '=', $id)->get();
+        return compact('blok');
     }
 }

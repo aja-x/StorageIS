@@ -2,7 +2,7 @@
 @section('content')
     {{--<div class="ecommerce-widget">--}}
     <div class="row">
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
             <div class="card">
                 <div class="card-header">
                     <h5 class="mb-0">Detail Blok <span class="badge badge-primary">{{ $blok[0]['nama_blok'] }}</span>
@@ -38,7 +38,6 @@
                                         @if(count($blok_service->getIdGudang($data->id)['blok_gudang']) == 0)
                                             <span class="badge badge-info">Belum digunakan</span>
                                         @else
-                                            @php($i = 1)
                                             @foreach($blok_service->getIdGudang($data->id)['blok_gudang'] as $data)
                                             <a href="{{ route('gudang.show', $data->id_gudang) }}">
                                                 <span class="badge badge-info"><span class="fa fa-warehouse"></span> ID <span class="badge badge-warning">{{ $data->id_gudang }}</span></span>

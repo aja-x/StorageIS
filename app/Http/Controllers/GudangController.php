@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Blok;
 use App\Gudang;
-use App\Services\BlokServices;
 use App\VGudang;
 use App\AsalKota;
 use App\JenisBeras;
@@ -32,8 +31,15 @@ class GudangController extends Controller
      */
     public function index()
     {
-        $v_gudang = VGudang::all();
-        return view('gudang.index', compact('v_gudang'));
+        if(Blok::all()->count() > 0)
+        {
+            $v_gudang = VGudang::all();
+            return view('gudang.index', compact('v_gudang'));
+        }
+        else
+        {
+            return view('blok.setup');
+        }
     }
 
     /**
@@ -58,6 +64,7 @@ class GudangController extends Controller
      */
     public function store(Request $request)
     {
+        date_default_timezone_set('Asia/Jakarta');
         $gudang = new Gudang();
         $gudang->id_asal_kota = $request->input('kota');
         $gudang->id_jenis_beras = $request->input('jenis_beras');
@@ -96,12 +103,12 @@ class GudangController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Gudang  $gudang
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $gudang = VGudang::find($id);
+        $gudang = VGudang::findOrFail($id);
         $blok_gudang = BlokGudang::where('id_gudang', '=', $id)
             ->join('tb_blok', 'tb_blok_gudang.id_blok', '=', 'tb_blok.id')
             ->join('tb_jalur', 'tb_blok.nama_blok', '=', 'tb_jalur.nama_blok')
@@ -134,15 +141,21 @@ class GudangController extends Controller
 
     /**
      * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function checkout($id)
     {
-        $gudang = Gudang::find($id);
+        date_default_timezone_set('Asia/Jakarta');
+        $gudang = Gudang::findOrFail($id);
         $gudang->tanggal_keluar = date('Y-m-d H:i:s');
         $gudang->update();
+        $blok_gudang = BlokGudang::where('id_gudang', '=', $id)->get();
+        foreach ($blok_gudang as $item) {
+            $blok = Blok::findOrFail($item->id_blok);
+            $blok->sisa_kapasitas += $item->jumlah_karung;
+            $blok->update();
+        }
         return redirect()->route('gudang.index');
-//        $gudang_services = new GudangServices();
-//        $gudang_services->isExpired($gudang->tanggal_masuk);
     }
 
     /**

@@ -18,6 +18,10 @@ class BlokController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        if(Blok::all()->count() == 0)
+        {
+            return view('blok.setup');
+        }
     }
 
     /**
