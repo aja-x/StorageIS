@@ -1,5 +1,9 @@
+## INI VIEW v_blok_gudang ##
 CREATE VIEW v_blok_gudang AS
 SELECT bg.*, b.nama_blok, b.kolom, b.baris, j.jalur
 FROM tb_blok_gudang bg
 JOIN tb_blok b ON bg.id_blok = b.id
 JOIN tb_jalur j ON b.nama_blok = j.nama_blok
+
+## INI VIEW v_gudang ##
+create view v_gudang as select `k`.`nama_kota` AS `nama_kota`,`jb`.`nama_jenis` AS `nama_jenis`,`kb`.`jenis_kualitas` AS `jenis_kualitas`,`bb`.`berat` AS `berat`,`g`.`id` AS `id`,`g`.`id_asal_kota` AS `id_asal_kota`,`g`.`id_jenis_beras` AS `id_jenis_beras`,`g`.`id_kualitas_beras` AS `id_kualitas_beras`,`g`.`id_jenis_berat_beras` AS `id_jenis_berat_beras`,`g`.`jumlah_karung` AS `jumlah_karung`,`g`.`tanggal_masuk` AS `tanggal_masuk`,`g`.`tanggal_keluar` AS `tanggal_keluar`,`g`.`qr_code` AS `qr_code`,`g`.`created_at` AS `created_at`,`g`.`updated_at` AS `updated_at` from ((((`db_storage_is`.`tb_gudang` `g` join `db_storage_is`.`tb_asal_kota` `k` on(`g`.`id_asal_kota` = `k`.`id`)) join `db_storage_is`.`tb_jenis_beras` `jb` on(`g`.`id_jenis_beras` = `jb`.`id`)) join `db_storage_is`.`tb_kualitas_beras` `kb` on(`g`.`id_kualitas_beras` = `kb`.`id`)) join `db_storage_is`.`tb_jenis_berat_beras` `bb` on(`g`.`id_jenis_berat_beras` = `bb`.`id`))

@@ -14,5 +14,6 @@ class Gudang extends Model
         'id_kualitas_beras',
         'id_jenis_berat_beras',
         'jumlah_karung',
+        'qr_code',
     ];
 }
